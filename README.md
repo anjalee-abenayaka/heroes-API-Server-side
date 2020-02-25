@@ -1,4 +1,4 @@
 # heroes-API-Server Side
  Server Side
 
- client application that consumes this API 
+ client-side application that consumes this API (https://github.com/anjalee-abenayaka/heroes-API-Client-Side)
