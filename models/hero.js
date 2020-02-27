@@ -19,7 +19,7 @@ type :[String],
 enum : ['Invisibility','Barking','Flying']},
 
 movies : [String],
-imageUrl : [String]
+imgUrl: String
 
 });
 
