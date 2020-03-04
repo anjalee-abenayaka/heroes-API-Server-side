@@ -28,7 +28,7 @@ app.use("/api/heroes",heroes); // custom middle ware. starting from this, its' a
 app.use("/",home); //
 //const PORT = 5000;
 const PORT = process.env.PORT;
-mongoose.connect("mongodb://localhost/herodb",{
+mongoose.connect("mongodb+srv://anjalee:12345@cluster0-edfz9.mongodb.net/herodb?retryWrites=true&w=majority",{
   useNewUrlParser: true })
   .then(() => console.log("Connected to the db successfully"))
   .catch(ex => console.log(ex));
