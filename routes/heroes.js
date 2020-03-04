@@ -1,5 +1,8 @@
 const express = require("express");
-const router = express.Router(); // express wiil not work then need to add express.router
+const router = express.Router(); 
+const  jwt = require("jsonwebtoken");
+const SECRET_KEY = "12345678" ;
+// express wiil not work then need to add express.router
 const Hero = require("../models/hero");
 
 
@@ -69,6 +72,20 @@ router.get("/", async(req, res) => {
      // heroesArray.push(newHero);
      
       //res.send(newHero);
+
+      // check token in request header and see if the token is valid or not
+
+      const token = req.header("x-jwt-token");
+      if (!token){
+        return res.status(401).send("Access denied");
+      }
+     try{ 
+       jwt.verify(token, SECRET_KEY);
+      }  catch(e)
+      {
+res.status(400).send("Invalid token");
+      }
+
   try{      
 let heroToAdd = new Hero({
 name : req.body.name,

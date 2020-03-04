@@ -7,7 +7,8 @@ const emailjob = require("./middleware/emailsender");
 
 const heroes = require("./routes/heroes"); //import file
 const home = require("./routes/home");
-
+const users = require("./routes/users");
+const auth = require("./routes/auth");
 app.use(cors());
 app.use(express.json()); //middle wear - we cannot see the 
 
@@ -21,10 +22,12 @@ app.use(authentication);
 app.use(emailjob);
 //its runing under the order of this app call
 //will runing on the server what ever the request it is
-
+app.use("/api/users", users);
+app.use("/api/auth", auth);
 app.use("/api/heroes",heroes); // custom middle ware. starting from this, its' automatically go to heroes routes
 app.use("/",home); //
-const PORT = 5000;
+//const PORT = 5000;
+const PORT = process.env.PORT;
 mongoose.connect("mongodb://localhost/herodb",{
   useNewUrlParser: true })
   .then(() => console.log("Connected to the db successfully"))
